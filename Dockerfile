@@ -17,7 +17,7 @@ WORKDIR /tmp
 RUN curl -k -L -o ${GRADLE_ZIP_FILE} http://downloads.gradle.org/distributions/${GRADLE_ZIP_FILE}
 RUN ls
 RUN unzip -foq ${GRADLE_ZIP_FILE} -d /opt/gradle
-RUN ln -sfn gradle-${GRADLE_VERSION} /opt/gradle/latest
+RUN ln -sfn /opt/gradle/gradle-${GRADLE_VERSION} /opt/gradle/latest
 RUN printf "export GRADLE_HOME=/opt/gradle/latest\nexport PATH=\$PATH:\$GRADLE_HOME/bin" > /etc/profile.d/gradle.sh
 RUN /etc/profile.d/gradle.sh
 # check installation
