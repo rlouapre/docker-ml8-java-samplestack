@@ -14,7 +14,8 @@ RUN yum install -y unzip
 ENV gradle_version 2.3
 WORKDIR /tmp
 RUN curl -k -L -O http://downloads.gradle.org/distributions/${gradle_version}-all.zip
-RUN unzip -foq gradle-${gradle_version}-all.zip -d /opt/gradle
+RUN ls
+RUN unzip -foq /tmp/gradle-${gradle_version}-all.zip -d /opt/gradle
 RUN ln -sfn gradle-${gradle_version} /opt/gradle/latest
 RUN printf "export GRADLE_HOME=/opt/gradle/latest\nexport PATH=\$PATH:\$GRADLE_HOME/bin" > /etc/profile.d/gradle.sh
 RUN /etc/profile.d/gradle.sh
