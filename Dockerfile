@@ -22,7 +22,7 @@ RUN printf "export GRADLE_HOME=/opt/gradle/latest\nexport PATH=\$PATH:\$GRADLE_H
 RUN chmod 777 /etc/profile.d/gradle.sh
 RUN /etc/profile.d/gradle.sh
 # check installation
-RUN /opt/gradle/latest/gradle -v
+RUN /opt/gradle/latest/bin/gradle -v
 RUN rm /tmp/${GRADLE_ZIP_FILE}
 
 RUN mkdir /opt/samplestack
