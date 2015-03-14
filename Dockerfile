@@ -6,6 +6,8 @@ RUN yum update -y
 ENV JAVA_VERSION 1.8.0
 # Install JDK
 RUN yum install -y java-${JAVA_VERSION}-openjdk-devel
+ENV JAVA_HOME /usr/lib/jvm/java-openjdk
+
 # Install Git
 RUN yum install -y git
 # Install Unzip
