@@ -11,17 +11,18 @@ RUN yum install -y unzip
 
 # installs to /opt/gradle
 # $GRADLE_HOME points to latest *installed* (not released)
-ENV gradle_version 2.3
+ENV GRADLE_VERSION 2.3
+ENV GRADLE_ZIP_FILE ${GRADLE_VERSION}-all.zip
 WORKDIR /tmp
-RUN curl -k -L -O http://downloads.gradle.org/distributions/${gradle_version}-all.zip
+RUN curl -k -L -o ${GRADLE_ZIP_FILE} http://downloads.gradle.org/distributions/${GRADLE_ZIP_FILE}
 RUN ls
-RUN unzip -foq /tmp/gradle-${gradle_version}-all.zip -d /opt/gradle
-RUN ln -sfn gradle-${gradle_version} /opt/gradle/latest
+RUN unzip -foq ${GRADLE_ZIP_FILE} -d /opt/gradle
+RUN ln -sfn gradle-${GRADLE_VERSION} /opt/gradle/latest
 RUN printf "export GRADLE_HOME=/opt/gradle/latest\nexport PATH=\$PATH:\$GRADLE_HOME/bin" > /etc/profile.d/gradle.sh
 RUN /etc/profile.d/gradle.sh
 # check installation
 RUN gradle -v
-RUN rm /tmp/gradle-${gradle_version}-all.zip
+RUN rm /tmp/${GRADLE_ZIP_FILE}
 
 RUN mkdir /opt/samplestack
 WORKDIR /opt/samplestack
