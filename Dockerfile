@@ -26,8 +26,8 @@ RUN git clone https://github.com/marklogic/marklogic-samplestack
 # RUN ifconfig
 # RUN curl 127.0.0.1:8001 -v
 
-# WORKDIR /opt/marklogic-samplestack/appserver/java-spring 
-# RUN ./gradlew dbInit
+WORKDIR /opt/marklogic-samplestack/appserver/java-spring 
+RUN ./gradlew seedDataFetch && ./gradlew seedDataExtract
 
 WORKDIR /
 # Expose MarkLogic admin
