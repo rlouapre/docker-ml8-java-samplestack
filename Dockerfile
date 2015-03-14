@@ -22,8 +22,13 @@ RUN yum install -y git
 WORKDIR /opt
 RUN git clone https://github.com/marklogic/marklogic-samplestack
 
+RUN /etc/rc.d/init.d/MarkLogic start && sleep5
+
+WORKDIR /opt/marklogic-samplestack/appserver/java-spring 
+RUN ./gradlew dbInit
+
 WORKDIR /
 # Expose MarkLogic admin
-EXPOSE 2022 8000 8001 8002
+EXPOSE 8000 8001 8002 8006 8090
 # Run Supervisor
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"] 
