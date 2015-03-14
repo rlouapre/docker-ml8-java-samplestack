@@ -6,6 +6,8 @@ RUN yum update -y
 RUN yum install -y java-1.7.0-openjdk.x86_64
 # Install Git
 RUN yum install -y git
+# Install Unzip
+RUN yum install -y unzip
 
 # installs to /opt/gradle
 # $GRADLE_HOME points to latest *installed* (not released)
@@ -19,6 +21,11 @@ RUN /etc/profile.d/gradle.sh
 # check installation
 RUN gradle -v
 RUN rm /tmp/gradle-${gradle_version}-all.zip
+
+RUN mkdir /opt/samplestack
+WORKDIR /opt/samplestack
+RUN git clone https://github.com/marklogic/marklogic-samplestack
+
 WORKDIR /
 # Expose MarkLogic admin
 EXPOSE 2022 8000 8001 8002
