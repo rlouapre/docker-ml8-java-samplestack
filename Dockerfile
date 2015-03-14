@@ -22,8 +22,9 @@ RUN yum install -y git
 WORKDIR /opt
 RUN git clone https://github.com/marklogic/marklogic-samplestack
 
-RUN /etc/rc.d/init.d/MarkLogic start && sleep 30
-RUN curl localhost:8001 -v
+RUN /etc/rc.d/init.d/MarkLogic start && sleep 5
+RUN ifconfig
+RUN curl 127.0.0.1:8001 -v
 
 WORKDIR /opt/marklogic-samplestack/appserver/java-spring 
 RUN ./gradlew dbInit
