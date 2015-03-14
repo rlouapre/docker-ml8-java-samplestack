@@ -12,7 +12,7 @@ Bootstrap and start Samplestack:
 
 ## Test
 
-Samplestack web app accessible from: http://{docker-ip}:8090  
-Samplestack REST server accessible from: http://{docker-ip}:8006  
+Samplestack web app accessible from: ```http://{docker-ip}:8090```  
+Samplestack REST server accessible from: ```http://{docker-ip}:8006```  
 
 If you are using docker-machine ip address is available from ```docker-machine ip {machine-name}```
