@@ -7,6 +7,13 @@ ENV JAVA_VERSION 1.8.0
 # Install JDK
 RUN yum install -y java-${JAVA_VERSION}-openjdk-devel
 ENV JAVA_HOME /usr/lib/jvm/java-openjdk
+RUN touch /etc/profile.d/java.sh && \
+    echo '#!/bin/bash' >> /etc/profile.d/java.sh && \
+    echo 'JAVA_HOME=/usr/lib/jvm/java-openjdk/' >> /etc/profile.d/java.sh && \
+    echo 'PATH=$JAVA_HOME/bin:$PATH' >> /etc/profile.d/java.sh && \
+    echo 'export PATH JAVA_HOME' >> /etc/profile.d/java.sh && \
+    chmod +x /etc/profile.d/java.sh && \
+    source /etc/profile.d/java.sh
 
 # Install Git
 RUN yum install -y git
