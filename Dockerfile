@@ -12,7 +12,7 @@ RUN yum install -y unzip
 # installs to /opt/gradle
 # $GRADLE_HOME points to latest *installed* (not released)
 ENV GRADLE_VERSION 2.3
-ENV GRADLE_ZIP_FILE ${GRADLE_VERSION}-all.zip
+ENV GRADLE_ZIP_FILE gradle-${GRADLE_VERSION}-all.zip
 WORKDIR /tmp
 RUN curl -k -L -o ${GRADLE_ZIP_FILE} http://downloads.gradle.org/distributions/${GRADLE_ZIP_FILE}
 RUN ls
