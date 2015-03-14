@@ -22,7 +22,7 @@ RUN yum install -y git
 WORKDIR /opt
 RUN git clone https://github.com/marklogic/marklogic-samplestack
 
-RUN /etc/rc.d/init.d/MarkLogic start && sleep 10
+RUN /etc/rc.d/init.d/MarkLogic start && sleep 30
 RUN curl localhost:8001 -v
 
 WORKDIR /opt/marklogic-samplestack/appserver/java-spring 
