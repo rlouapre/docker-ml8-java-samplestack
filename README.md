@@ -13,8 +13,8 @@ Bootstrap and start Samplestack:
 ```docker exec java-samplestack bash -c "cd /home/marklogic-samplestack/appserver/java-spring && ./gradlew dbInit && ./gradlew appserver"```  
 
 ### Run Samplestack from a volume mounted to the container (for development)  
-path-to-samplestack: /Users/Richard/Projects/ML/marklogic-samplestack
-```docker run --name java-samplestack -d -p 8000:8000 -p 8001:8001 -p 8002:8002 -p 8006:8006 -p 8090:8090 -v ${path-to-samplestack}:/opt/marklogic-samplestack rlouapre/centos6-ml8-java-samplestack```  
+Assuming path-to-samplestack is /Users/Richard/Projects/ML/marklogic-samplestack  
+```docker run --name java-samplestack -d -p 8000:8000 -p 8001:8001 -p 8002:8002 -p 8006:8006 -p 8090:8090 -v /Users/Richard/Projects/ML/marklogic-samplestack:/opt/marklogic-samplestack rlouapre/centos6-ml8-java-samplestack```  
 
 ```docker exec java-samplestack bash -c "cd /opt/marklogic-samplestack/appserver/java-spring && ./gradlew dbInit && ./gradlew appserver"```  
 
