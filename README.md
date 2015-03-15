@@ -5,10 +5,23 @@ Dockerfile for MarkLogic 8 and SampleStack Java
 Build docker image:  
 ```docker build --rm=true -t "rlouapre/centos6-ml8-java-samplestack" github.com/rlouapre/docker-ml8-java-va-samplestack
 samplestack```  
-Run docker named container:  
+
+### Run Samplestack within the container (for demo)  
+Run docker with named container:  
 ```docker run --name java-samplestack -d -p 8000:8000 -p 8001:8001 -p 8002:8002 -p 8006:8006 -p 8090:8090 rlouapre/centos6-ml8-java-samplestack```  
 Bootstrap and start Samplestack:  
 ```docker exec java-samplestack bash -c "cd /home/marklogic-samplestack/appserver/java-spring && ./gradlew dbInit && ./gradlew appserver"```  
+
+### Run Samplestack from a volume mounted to the container (for development)  
+path-to-samplestack: /Users/Richard/Projects/ML/marklogic-samplestack
+```docker run --name java-samplestack -d -p 8000:8000 -p 8001:8001 -p 8002:8002 -p 8006:8006 -p 8090:8090 -v ${path-to-samplestack}:/opt/marklogic-samplestack rlouapre/centos6-ml8-java-samplestack```  
+
+```docker exec java-samplestack bash -c "cd /opt/marklogic-samplestack/appserver/java-spring && ./gradlew dbInit && ./gradlew appserver"```  
+
+FIX: Windows / Virtualbox driver does not mount to local file system
+VBoxManage controlvm ${machine-name} acpipowerbutton
+VBoxManage sharedfolder add ${machine-name} --name Users --hostpath c:/Users --automount
+VBoxManage startvm ${machine-name} --type headless
 
 ## Test
 
