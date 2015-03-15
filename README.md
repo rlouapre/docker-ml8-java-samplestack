@@ -18,10 +18,10 @@ path-to-samplestack: /Users/Richard/Projects/ML/marklogic-samplestack
 
 ```docker exec java-samplestack bash -c "cd /opt/marklogic-samplestack/appserver/java-spring && ./gradlew dbInit && ./gradlew appserver"```  
 
-FIX: Windows / Virtualbox driver does not mount to local file system
-VBoxManage controlvm ${machine-name} acpipowerbutton
-VBoxManage sharedfolder add ${machine-name} --name Users --hostpath c:/Users --automount
-VBoxManage startvm ${machine-name} --type headless
+FIX: Windows / Virtualbox driver does not mount to local file system  
+```VBoxManage controlvm ${machine-name} acpipowerbutton```  
+```VBoxManage sharedfolder add ${machine-name} --name Users --hostpath c:/Users --automount```  
+```VBoxManage startvm ${machine-name} --type headless```  
 
 ## Test
 
