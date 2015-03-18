@@ -2,6 +2,9 @@
 Dockerfile for MarkLogic 8 and SampleStack Java
 
 ## Setup
+Create your docker base image: https://github.com/rlouapre/docker-ml  
+Make sure to download MarkLogic 8 - Centos 6 RPM package  
+
 Build docker image:  
 ```docker build --rm=true -t "centos6-ml8-java-samplestack" github.com/rlouapre/docker-ml8-java-samplestack```  
 
