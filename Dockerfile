@@ -1,4 +1,4 @@
-FROM rlouapre/centos6-ml8:8.0-1.1
+FROM centos6-ml
 MAINTAINER Richard Louapre <richard.louapre@marklogic.com>
 
 RUN yum update -y
